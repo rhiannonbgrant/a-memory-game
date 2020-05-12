@@ -131,8 +131,7 @@ footer p {
   visibility: hidden;
 }
 
-#intro,
-#finished,
+#intro #finished,
 #play-game {
   height: 100vh;
   flex-direction: column;
