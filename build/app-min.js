@@ -1,6 +1,10 @@
 const theCards = document.querySelectorAll(".the-card");
 const changeCardPic = document.querySelectorAll(".the-card use");
 const cardTypes = document.querySelectorAll("symbol");
+const introScreen = document.querySelector("#intro");
+const letsPlay = document.querySelector("#intro button");
+const playGame = document.querySelector("#play-game");
+const finished = document.querySelector("#finished");
 
 const cards = Array.from(theCards);
 
@@ -92,12 +96,13 @@ cards.forEach((card) => {
   card.addEventListener("click", function () {
     card.classList.add("turn-card");
     noOfTurnedCards++;
-    if (noOfTurnedCards === 1) {
+    let noOfCardsRemoved = 0;
+    if (noOfTurnedCards % 2 !== 0) {
       getCard1 = cards[cards.indexOf(card)];
       picture1Location = getCard1.getElementsByTagName("use").item(0);
       card1 = picture1Location.getAttribute("href");
       console.log(card1);
-    } else if (noOfTurnedCards === 2) {
+    } else if (noOfTurnedCards % 2 === 0) {
       getCard2 = cards[cards.indexOf(card)];
       picture2Location = getCard2.getElementsByTagName("use").item(0);
       card2 = picture2Location.getAttribute("href");
@@ -111,13 +116,24 @@ cards.forEach((card) => {
         setTimeout(() => {
           getCard1.classList.add("removeCard");
           getCard2.classList.add("removeCard");
+          noOfCardsRemoved = noOfCardsRemoved + 2;
+          console.log(noOfCardsRemoved);
+          if (noOfCardsRemoved === cards.length) {
+            playGame.classList.toggle("fadeIn");
+            finished.classList.toggle("fadeIn");
+          }
         }, 2000);
       }
     }
   });
 });
 
-console.log(random20pairs);
-console.log(numbers50);
-console.log(randomlyOrderCards);
-console.log(cards);
+letsPlay.addEventListener("click", () => {
+  introScreen.classList.toggle("fadeIn");
+  playGame.classList.toggle("fadeIn");
+});
+
+// console.log(random20pairs.length);
+// console.log(numbers50.length);
+console.log(randomlyOrderCards.length);
+console.log(cards.length);
