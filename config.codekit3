@@ -130,7 +130,7 @@
 	"/_svg/012-devil.svg": {
 		"ft": 2097152,
 		"miP": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "/_svg/012-devil.svg",
 		"oF": 0,
 		"opt": 0,
@@ -517,11 +517,22 @@
 		"plM": 52780316221407,
 		"prP": 0
 		},
+	"/build/app-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "/build/app-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/build/app.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
-		"mi": 1,
+		"mi": 0,
 		"oA": 0,
 		"oAP": "/build/app-min.js",
 		"oF": 0,
@@ -1410,7 +1421,7 @@
 			"optionString": "{'allowParens': true}"
 			},
 		"no-console": {
-			"active": 1,
+			"active": 0,
 			"optionString": "{'allow': ['warn', 'error']}"
 			},
 		"no-const-assign": {
@@ -2563,7 +2574,7 @@
 		"autoOutputPathStyle": 0,
 		"bundleFormat": 0,
 		"createSourceMap": 0,
-		"minifyOutput": 1,
+		"minifyOutput": 0,
 		"syntaxCheckerStyle": 3,
 		"transpilerStyle": 0
 		},
