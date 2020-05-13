@@ -8,9 +8,11 @@ const finished = document.querySelector("#finished");
 
 const cards = Array.from(theCards);
 
+const twoCardsTurned = null;
+
 console.log(cardTypes);
 
-let noOfTurnedCards = 0;
+let noOfCardsTurned = 0;
 let card1;
 let card2;
 let picture1Location;
@@ -92,48 +94,58 @@ for (let k = 0; k < 40; k++) {
   changeCardPic[k].setAttribute("href", picture);
 }
 
-cards.forEach((card) => {
-  card.addEventListener("click", function () {
-    card.classList.add("turn-card");
-    noOfTurnedCards++;
-    let noOfCardsRemoved = 0;
-    if (noOfTurnedCards % 2 !== 0) {
-      getCard1 = cards[cards.indexOf(card)];
-      picture1Location = getCard1.getElementsByTagName("use").item(0);
-      card1 = picture1Location.getAttribute("href");
-      console.log(card1);
-    } else if (noOfTurnedCards % 2 === 0) {
-      getCard2 = cards[cards.indexOf(card)];
-      picture2Location = getCard2.getElementsByTagName("use").item(0);
-      card2 = picture2Location.getAttribute("href");
-      console.log(card2);
-      if (card1 !== card2) {
-        setTimeout(() => {
-          getCard1.classList.remove("turn-card");
-          getCard2.classList.remove("turn-card");
-        }, 2000);
-      } else if (card1 === card2) {
-        setTimeout(() => {
-          getCard1.classList.add("removeCard");
-          getCard2.classList.add("removeCard");
-          noOfCardsRemoved = noOfCardsRemoved + 2;
-          console.log(noOfCardsRemoved);
-          if (noOfCardsRemoved === cards.length) {
-            playGame.classList.toggle("fadeIn");
-            finished.classList.toggle("fadeIn");
-          }
-        }, 2000);
-      }
-    }
-  });
-});
-
 letsPlay.addEventListener("click", () => {
   introScreen.classList.toggle("fadeIn");
   playGame.classList.toggle("fadeIn");
+});
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    noOfCardsTurned++;
+    if (noOfCardsTurned < 3) {
+      card.classList.add("turn-card");
+      console.log(noOfCardsTurned);
+      let noOfCardsRemoved = 0;
+      if (noOfCardsTurned % 2 !== 0) {
+        getCard1 = cards[cards.indexOf(card)];
+        picture1Location = getCard1.getElementsByTagName("use").item(0);
+        card1 = picture1Location.getAttribute("href");
+        console.log(card1);
+      } else if (noOfCardsTurned % 2 === 0) {
+        console.log(noOfCardsTurned);
+        getCard2 = cards[cards.indexOf(card)];
+        picture2Location = getCard2.getElementsByTagName("use").item(0);
+        card2 = picture2Location.getAttribute("href");
+        console.log(card2);
+        if (card1 !== card2) {
+          setTimeout(() => {
+            getCard1.classList.remove("turn-card");
+            getCard2.classList.remove("turn-card");
+            noOfCardsTurned = 0;
+          }, 2000);
+        } else if (card1 === card2) {
+          setTimeout(() => {
+            getCard1.classList.add("removeCard");
+            getCard2.classList.add("removeCard");
+            noOfCardsRemoved = noOfCardsRemoved + 2;
+            noOfCardsTurned = 0;
+            console.log(noOfCardsRemoved);
+            if (noOfCardsRemoved === cards.length) {
+              playGame.classList.toggle("fadeIn");
+              finished.classList.toggle("fadeIn");
+            }
+          }, 2000);
+        }
+      }
+    }
+  });
 });
 
 // console.log(random20pairs.length);
 // console.log(numbers50.length);
 console.log(randomlyOrderCards.length);
 console.log(cards.length);
+
+// });
+
+// if (!twoCardsTurned) {
