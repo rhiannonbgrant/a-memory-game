@@ -56,18 +56,21 @@ footer p {
 
 .grid {
   display: grid;
+  width: 100vw;
+  height: 90vh;
+  padding: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   justify-content: center;
-  align-items: center;
-  justify-items: center;
+  justify-items: stretch;
+  align-items: stretch;
   align-content: center;
 }
 
 .card-container {
-  width: 120px;
-  height: 150px;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -116,7 +119,9 @@ footer p {
 }
 
 #play-game svg {
-  padding: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
 }
 
 .fadeIn {
