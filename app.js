@@ -5,8 +5,11 @@ const introScreen = document.querySelector("#intro");
 const letsPlay = document.querySelector("#intro button");
 const playGame = document.querySelector("#play-game");
 const finished = document.querySelector("#finished");
+const intFrameWidth = window.innerWidth;
 
-let random20pairs = [];
+let randomPairs = [];
+let noOfRandomPairs;
+
 const cards = Array.from(theCards);
 
 let noOfCardsTurned = 0;
@@ -29,16 +32,22 @@ function range(j, k) {
 
 let numbers50 = range(0, cardTypes.length - 1);
 
+if (intFrameWidth < 420) {
+  noOfRandomPairs = 16;
+} else {
+  noOfRandomPairs = 20;
+}
+
 for (let i = 0; i < 20; i++) {
   let randomNumber = Math.floor(Math.random() * numbers50.length);
-  random20pairs.push(numbers50[randomNumber], numbers50[randomNumber]);
+  randomPairs.push(numbers50[randomNumber], numbers50[randomNumber]);
   numbers50.splice(randomNumber, 1);
 }
 
 for (let j = 0; j < 40; j++) {
-  let randomNumber = Math.floor(Math.random() * random20pairs.length);
-  randomlyOrderCards.push(random20pairs[randomNumber]);
-  random20pairs.splice(randomNumber, 1);
+  let randomNumber = Math.floor(Math.random() * randomPairs.length);
+  randomlyOrderCards.push(randomPairs[randomNumber]);
+  randomPairs.splice(randomNumber, 1);
 }
 
 for (let k = 0; k < 40; k++) {
@@ -95,3 +104,5 @@ cards.forEach((card) => {
     }
   });
 });
+console.log(intFrameWidth);
+console.log(noOfRandomPairs);
