@@ -5,16 +5,20 @@ const introScreen = document.querySelector("#intro");
 const letsPlay = document.querySelector("#intro button");
 const playGame = document.querySelector("#play-game");
 const finished = document.querySelector("#finished");
-const intFrameWidth = window.innerWidth;
+const htmlElm = document.getElementsByTagName("html").item(0);
+const intFrameWidth = htmlElm.clientWidth;
+const theCardsContainer = document.querySelectorAll(".card-container");
 
 let randomPairs = [];
 let noOfRandomPairs;
+let noOfCards;
 
 const cards = Array.from(theCards);
+const cardsContainer = Array.from(theCardsContainer);
 
 let noOfCardsTurned = 0;
-let cardId1;
-let cardId2;
+let card1Index;
+let card2Index;
 let card1;
 let card2;
 let picture1Location;
@@ -33,24 +37,31 @@ function range(j, k) {
 let numbers50 = range(0, cardTypes.length - 1);
 
 if (intFrameWidth < 420) {
-  noOfRandomPairs = 16;
+  noOfRandomPairs = 10;
+  noOfCards = 20;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
 } else {
   noOfRandomPairs = 20;
+  noOfCards = 40;
 }
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < noOfRandomPairs; i++) {
   let randomNumber = Math.floor(Math.random() * numbers50.length);
   randomPairs.push(numbers50[randomNumber], numbers50[randomNumber]);
   numbers50.splice(randomNumber, 1);
 }
 
-for (let j = 0; j < 40; j++) {
+for (let j = 0; j < noOfCards; j++) {
   let randomNumber = Math.floor(Math.random() * randomPairs.length);
   randomlyOrderCards.push(randomPairs[randomNumber]);
   randomPairs.splice(randomNumber, 1);
 }
 
-for (let k = 0; k < 40; k++) {
+for (let k = 0; k < noOfCards; k++) {
   let picture = "#" + cardTypes[randomlyOrderCards[k]].getAttribute("id");
   changeCardPic[k].setAttribute("href", picture);
 }
@@ -66,14 +77,14 @@ cards.forEach((card) => {
     if (noOfCardsTurned < 3) {
       card.classList.add("turn-card");
       if (noOfCardsTurned % 2 !== 0) {
-        cardId1 = card.getAttribute("id");
+        card1Index = cards.indexOf(card);
         getCard1 = cards[cards.indexOf(card)];
         console.log(getCard1);
         picture1Location = getCard1.getElementsByTagName("use").item(0);
         card1 = picture1Location.getAttribute("href");
       } else if (noOfCardsTurned % 2 === 0) {
-        cardId2 = card.getAttribute("id");
-        if (cardId1 !== cardId2) {
+        card2Index = cards.indexOf(card);
+        if (card1Index !== card2Index) {
           getCard2 = cards[cards.indexOf(card)];
           console.log(getCard2);
           picture2Location = getCard2.getElementsByTagName("use").item(0);
@@ -86,23 +97,25 @@ cards.forEach((card) => {
             }, 1000);
           } else if (card1 === card2) {
             setTimeout(() => {
-              getCard1.classList.add("removeCard");
-              getCard2.classList.add("removeCard");
+              getCard1.classList.add("remove-card");
+              getCard2.classList.add("remove-card");
               noOfCardsRemoved += 2;
               console.log(noOfCardsRemoved);
               noOfCardsTurned = 0;
-              if (noOfCardsRemoved === cards.length) {
+              if (noOfCardsRemoved === noOfCards) {
                 playGame.classList.toggle("fadeIn");
                 finished.classList.toggle("fadeIn");
               }
             }, 1000);
           }
-        } else if (cardId1 === cardId2) {
+        } else if (card1Index === card2Index) {
           noOfCardsTurned--;
         }
       }
     }
   });
 });
+console.log(htmlElm);
 console.log(intFrameWidth);
-console.log(noOfRandomPairs);
+console.log(playGame);
+// console.log(noOfRandomPairs);
