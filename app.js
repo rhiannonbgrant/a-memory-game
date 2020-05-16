@@ -6,8 +6,9 @@ const letsPlay = document.querySelector("#intro button");
 const playGame = document.querySelector("#play-game");
 const finished = document.querySelector("#finished");
 const htmlElm = document.getElementsByTagName("html").item(0);
-const intFrameWidth = htmlElm.clientWidth;
 const theCardsContainer = document.querySelectorAll(".card-container");
+let intFrameWidth = htmlElm.clientWidth;
+let intFrameHeight = htmlElm.clientHeight;
 
 let randomPairs = [];
 let noOfRandomPairs;
@@ -44,9 +45,41 @@ if (intFrameWidth < 420) {
       cardContainer.classList.add("remove-card");
     }
   });
-} else {
+} else if (intFrameWidth < 900 && intFrameHeight < 481) {
+  noOfRandomPairs = 10;
+  noOfCards = 20;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+} else if (intFrameWidth < 1180) {
   noOfRandomPairs = 20;
   noOfCards = 40;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+} else if (intFrameWidth < 1460) {
+  noOfRandomPairs = 25;
+  noOfCards = 50;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+} else if (intFrameWidth < 1740) {
+  noOfRandomPairs = 30;
+  noOfCards = 60;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+} else {
+  noOfRandomPairs = 45;
+  noOfCards = 70;
 }
 
 for (let i = 0; i < noOfRandomPairs; i++) {
@@ -118,4 +151,5 @@ cards.forEach((card) => {
 console.log(htmlElm);
 console.log(intFrameWidth);
 console.log(playGame);
+console.log(intFrameHeight);
 // console.log(noOfRandomPairs);
