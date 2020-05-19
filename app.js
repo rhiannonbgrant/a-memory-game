@@ -36,8 +36,8 @@ function range(j, k) {
 }
 
 let numbers50 = range(0, cardTypes.length - 1);
-
-if (intFrameWidth < 420) {
+// mobile portrait
+if (intFrameWidth < 481) {
   noOfRandomPairs = 10;
   noOfCards = 20;
   cardsContainer.forEach((cardContainer) => {
@@ -45,6 +45,7 @@ if (intFrameWidth < 420) {
       cardContainer.classList.add("remove-card");
     }
   });
+  // mobile landscape
 } else if (intFrameWidth < 900 && intFrameHeight < 481) {
   noOfRandomPairs = 10;
   noOfCards = 20;
@@ -53,7 +54,8 @@ if (intFrameWidth < 420) {
       cardContainer.classList.add("remove-card");
     }
   });
-} else if (intFrameWidth < 1180) {
+  // Ipad landscape
+} else if (intFrameWidth < 1030 && intFrameHeight < 780) {
   noOfRandomPairs = 20;
   noOfCards = 40;
   cardsContainer.forEach((cardContainer) => {
@@ -61,6 +63,25 @@ if (intFrameWidth < 420) {
       cardContainer.classList.add("remove-card");
     }
   });
+  // Ipad portrait
+} else if (intFrameHeight < 1030 && intFrameWidth < 780) {
+  noOfRandomPairs = 20;
+  noOfCards = 40;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+  //Large tablets portrait
+} else if (intFrameWidth < 1460 && intFrameHeight > 781) {
+  noOfRandomPairs = 25;
+  noOfCards = 50;
+  cardsContainer.forEach((cardContainer) => {
+    if (cardsContainer.indexOf(cardContainer) >= noOfCards) {
+      cardContainer.classList.add("remove-card");
+    }
+  });
+  // 13inch destop and large tablet is landscape
 } else if (intFrameWidth < 1460) {
   noOfRandomPairs = 25;
   noOfCards = 50;
@@ -69,6 +90,7 @@ if (intFrameWidth < 420) {
       cardContainer.classList.add("remove-card");
     }
   });
+  //
 } else if (intFrameWidth < 1740) {
   noOfRandomPairs = 30;
   noOfCards = 60;
