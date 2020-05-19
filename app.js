@@ -3,6 +3,7 @@ const changeCardPic = document.querySelectorAll(".the-card use");
 const cardTypes = document.querySelectorAll("symbol");
 const introScreen = document.querySelector("#intro");
 const letsPlay = document.querySelector("#intro button");
+const playAgain = document.querySelector("#finished button");
 const playGame = document.querySelector("#play-game");
 const finished = document.querySelector("#finished");
 const htmlElm = document.getElementsByTagName("html").item(0);
@@ -121,11 +122,6 @@ for (let k = 0; k < noOfCards; k++) {
   changeCardPic[k].setAttribute("href", picture);
 }
 
-letsPlay.addEventListener("click", () => {
-  introScreen.classList.toggle("fadeIn");
-  playGame.classList.toggle("fadeIn");
-});
-
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     noOfCardsTurned++;
@@ -170,6 +166,17 @@ cards.forEach((card) => {
     }
   });
 });
+
+letsPlay.addEventListener("click", () => {
+  introScreen.classList.toggle("fadeIn");
+  playGame.classList.toggle("fadeIn");
+});
+
+playAgain.addEventListener("click", () => {
+  finished.classList.toggle("fadeIn");
+  playGame.classList.toggle("fadeIn");
+});
+
 console.log(htmlElm);
 console.log(intFrameWidth);
 console.log(playGame);
