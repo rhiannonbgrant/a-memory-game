@@ -15,7 +15,7 @@ button {
   font-size: 1.8rem;
   font-family: "Indie Flower", cursive;
   padding: 1rem;
-  margin: 2rem 0 8rem 0;
+  margin: 2rem 0 0 0;
   background-image: linear-gradient(145deg, #ff8080, #fb0091);
   color: #faf2f2;
   border-radius: 5px;
@@ -35,13 +35,13 @@ p {
 }
 
 footer {
-  padding: 0 30px 15px 30px;
+  padding: 0 50px 15px 35px;
   font-family: "Indie Flower", cursive;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: flex-end;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 footer svg {
   width: 40px;
@@ -55,7 +55,10 @@ footer a {
 
 #intro svg {
   margin: 3rem 0 0 0;
-  width: 200px;
+  width: 250px;
+}
+#finished svg {
+  width: 300px;
 }
 
 .container {
@@ -67,7 +70,7 @@ footer a {
 .grid {
   display: grid;
   width: 100vw;
-  height: 97vh;
+  height: 92vh;
   padding: 30px;
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -148,7 +151,7 @@ footer a {
 
 #intro,
 #finished {
-  height: 93vh;
+  height: 92vh;
   flex-direction: column;
   align-items: center;
   justify-items: center;
@@ -156,13 +159,13 @@ footer a {
 }
 
 #play-game {
-  height: 97vh;
+  height: 92vh;
   align-content: start;
   flex-direction: column;
   justify-items: center;
   align-items: center;
 }
-
+/* Larger screens */
 @media screen and (max-width: 1740px) {
   .grid {
     grid-template-columns: repeat(12, 1fr);
@@ -172,6 +175,13 @@ footer a {
 @media screen and (max-width: 1460px) {
   .grid {
     grid-template-columns: repeat(10, 1fr);
+  }
+
+  #intro,
+  #play-game,
+  #finished,
+  .grid {
+    height: 90vh;
   }
 }
 
@@ -187,6 +197,15 @@ footer a {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(10, 1fr);
   }
+  #finished svg {
+    width: 33vw;
+  }
+  #intro,
+  #play-game,
+  #finished,
+  .grid {
+    height: 93vh;
+  }
 }
 /* Large tablets in landscape mode */
 @media screen and (max-width: 1460px) and (orientation: landscape) {
@@ -194,13 +213,43 @@ footer a {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(5, 1fr);
   }
+
+  #finished svg {
+    width: 25vw;
+  }
+
+  #intro,
+  #play-game,
+  #finished,
+  .grid {
+    height: 92vh;
+  }
 }
 
 /* Tablets in portrait mode */
 @media screen and (max-height: 1030px) and (orientation: portrait) {
+  button {
+    margin: 2rem 0 2rem 0;
+  }
+
+  #finished button {
+    margin: 1rem 0 1rem 0;
+  }
+
+  #finished svg {
+    width: 35vw;
+  }
+
   .grid {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(8, 1fr);
+  }
+
+  #intro,
+  #play-game,
+  #finished,
+  .grid {
+    height: 92vh;
   }
 }
 /* Tablets in landscape mode */
@@ -210,14 +259,16 @@ footer a {
   }
   #finished svg {
     margin: 0;
-    width: 25%;
+    width: 25vw;
   }
   .grid {
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(5, 1fr);
   }
   #intro,
-  #finished {
+  #play-game,
+  #finished,
+  .grid {
     height: 90vh;
   }
 }
@@ -227,37 +278,42 @@ footer a {
   h1 {
     font-size: 3.5rem;
   }
+
   button {
     font-size: 1.2rem;
     padding: 0.7rem;
     margin: 0.5rem 0 0.5rem 0;
   }
+
   footer {
     padding: 0 20px 10px 20px;
   }
 
   #intro,
-  #finished {
-    height: 89vh;
+  #play-game,
+  #finished,
+  .grid {
+    height: 90vh;
+  }
+  #intro svg {
+    width: 45vw;
   }
 
   #intro,
   #finished svg {
     padding: 1rem;
   }
+
   #play-game svg {
     padding: 3px;
-  }
-  #play-game {
-    height: 90vh;
   }
   .grid {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 10px;
     padding: 15px;
-    height: 90vh;
   }
+
   .card-container {
     width: 100%;
     height: 100%;
@@ -290,16 +346,14 @@ footer a {
   #finished {
     height: 85vh;
   }
-  /* {
-    height: 90vh;
-  } */
+
   #intro svg {
     margin: 2rem 0 0 0;
-    width: 20%;
+    width: 20vw;
   }
   #finished svg {
     margin: 1rem 0 0 0;
-    width: 20%;
+    width: 20vw;
   }
   #finished p {
     font-size: 2.3rem;
