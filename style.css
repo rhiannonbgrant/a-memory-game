@@ -359,3 +359,50 @@ footer a {
     font-size: 2.3rem;
   }
 }
+/* 
+#floating-narwhal {
+  animation: floating 3s ease infinite;
+  animation-play-state: running;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  5% {
+    transform: translate(-6px, -3px);
+  }
+  15% {
+    transform: translate(-12px, -6px);
+  }
+  25% {
+    transform: translate(-18px, -12px);
+  }
+  35% {
+    transform: translate(-24px, -12px);
+  }
+  45% {
+    transform: translate(-16px, -8px);
+  }
+  55% {
+    transform: translate(0px, 0px);
+  }
+  65% {
+    transform: translate(6px, -3px);
+  }
+  75% {
+    transform: translate(12px, -6px);
+  }
+  85% {
+    transform: translate(18px, -9px);
+  }
+  90% {
+    transform: translate(24px, -12px);
+  }
+  95% {
+    transform: translate(16px, -8px);
+  }
+  100% {
+    transform: translate(8px, -4px);
+  }
+} */
