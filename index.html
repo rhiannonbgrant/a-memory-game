@@ -15,7 +15,7 @@
     <title>Memory</title>
   </head>
   <body>
-    <div id="intro" class="container">
+    <div id="intro" class="container fadeIn">
       <svg viewBox="0 0 512 512">
         
         <defs>
@@ -2811,10 +2811,12 @@
         </div>
       </div>
     </div>
-    <div id="finished" class="container fadeIn">
-      <svg viewBox="0 0 512 512" width="200px">
-        <use href="#narwhal" />
-      </svg>
+    <div id="finished" class="container">
+      <div id="floating-narwhal">
+        <svg viewBox="0 0 512 512" width="200px">
+          <use href="#narwhal" />
+        </svg>
+      </div>
       <p>Well done!!!</p>
       <button>Play again!</button>
     </div>
