@@ -129,6 +129,7 @@ function setTheCards() {
     let picture = "#" + cardTypes[randomlyOrderCards[k]].getAttribute("id");
     changeCardPic[k].setAttribute("href", picture);
   }
+  noOfCardsRemoved = 0;
 }
 
 //The functions that runs the game
